@@ -34,7 +34,7 @@ def main():
         if rec.QC != 'PASS':
             continue
         bamfile_base = return_file_basename(rec.BAMPath)
-        pileupout=".".join([bamfile_base, bedfile_base, '.pileup'])
+        pileupout=".".join([bamfile_base, bedfile_base, 'pileup'])
         
         commandline=" ".join([ args.bin, 'mpileup', '-q', args.bq, '-Q', args.mq, '-f', args.ref, '-l', args.bed, rec.BAMPath, '>', cwd+"/"+pileupout])        
  
