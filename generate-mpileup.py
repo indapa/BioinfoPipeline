@@ -36,7 +36,7 @@ def main():
         bamfile_base = return_file_basename(rec.BAMPath)
         pileupout=".".join([bamfile_base, bedfile_base, '.pileup'])
         
-        commandline=" ".join([ args.bin, 'mpileup', '-q', args.bq, '-Q', args.mq, '-f', args.ref, '-l', args.bed, rec.BAMPath, '>', cwd+pileupout])        
+        commandline=" ".join([ args.bin, 'mpileup', '-q', args.bq, '-Q', args.mq, '-f', args.ref, '-l', args.bed, rec.BAMPath, '>', cwd+"/"+pileupout])        
  
         outfh=open("pileupjob."+bamfile_base+"."+bedfile_base+".sh", 'w')
         #print commandline
