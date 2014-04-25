@@ -18,7 +18,7 @@ def main():
     parser.add_argument("-q", help="base quality", dest='bq', default='20')
     parser.add_argument("-bin", help="path to samtools", dest='bin', default="/broad/software/free/Linux/redhat_5_x86_64/pkgs/samtools/samtools_0.1.19/bin/samtools")
     parser.add_argument("-bed", dest='bed', help="bedfile")
-    parser.add_argument("-ref", dest='ref', default='/seq/references/Homo_sapiens_assembly19/v1/Homo_sapiens_assembly19.fasta', help="bedfile")
+    parser.add_argument("-ref", dest='ref', default='/seq/references/Homo_sapiens_assembly19/v1/Homo_sapiens_assembly19.fasta', help="reference fasta")
     
     parser.add_argument('seqindex',  type=str,help='file.index')
     
@@ -34,13 +34,13 @@ def main():
         if rec.QC != 'PASS':
             continue
         bamfile_base = return_file_basename(rec.BAMPath)
-        pileupout=".".join([bamfile_base, bedfile_base, 'pileup'])
+        pileupout=".".join([bamfile_base, bedfile_base, '.pileup'])
         
         commandline=" ".join([ args.bin, 'mpileup', '-q', args.bq, '-Q', args.mq, '-f', args.ref, '-l', args.bed, rec.BAMPath, '>', cwd+pileupout])        
  
         outfh=open("pileupjob."+bamfile_base+"."+bedfile_base+".sh", 'w')
- 
-        outfh.write(commandline+"\n")
+        #print commandline
+        #outfh.write(commandline+"\n")
         
         #samtools mpileup -q 30 -Q 20 -f /Users/indapa/Research/Genomes/hg19/Homo_sapiens_assembly19.fasta -l resources/HGDP/HGDP_938.bed pileup2seq/exampleBAM/NA12878.chrom22.recal.bam > NA12878.chrom22.pileup
         
