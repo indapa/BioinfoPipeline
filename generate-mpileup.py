@@ -40,7 +40,7 @@ def main():
  
         outfh=open("pileupjob."+bamfile_base+"."+bedfile_base+".sh", 'w')
         #print commandline
-        #outfh.write(commandline+"\n")
+        outfh.write(commandline+"\n")
         
         #samtools mpileup -q 30 -Q 20 -f /Users/indapa/Research/Genomes/hg19/Homo_sapiens_assembly19.fasta -l resources/HGDP/HGDP_938.bed pileup2seq/exampleBAM/NA12878.chrom22.recal.bam > NA12878.chrom22.pileup
         
