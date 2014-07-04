@@ -37,7 +37,7 @@ def main():
         #print record.INFO
 
 
-        new_site_dp =sum ( [ call.data.DP for call in record.samples if call.called ==True ] )
+        new_site_dp =sum ( [ call.data.DP for call in record.samples if call.called ==True and call.data.DP  ] )
         new_site_gq_mean= round(np.mean([ call.data.GQ for call in record.samples if call.called ==True ]),2)
         new_site_gq_stdev= round(np.std([ call.data.GQ for call in record.samples if call.called ==True ]),2)
 
