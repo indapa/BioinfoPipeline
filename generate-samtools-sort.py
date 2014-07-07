@@ -50,14 +50,14 @@ def main():
     for sample in d.keys():
         files=" ".join( d[sample] )
 
-        if os.path.isfile(CWD+"/"+sample+".bam") == False:
-            sys.sterr.write("merged bam for sample " + sample + " doesn't exist!")
-            continue
+        #if os.path.isfile(CWD+"/"+sample+".bam") == False:
+        #    sys.stderr.write("merged bam for sample " + sample + " doesn't exist in " + CWD + "\n")
+        #    continue
 
-        commandline =  SAMTOOLS + " sort " +  CWD + "/"+sample+".bam"+  sample+".sorted" +
+        commandline =  SAMTOOLS + " sort " +  CWD + "/"+ sample + ".bam " +  sample+ ".sorted"
         #print commandline
 
-        #scriptfile=".".join([sample, 'samtoolsmerge', 'sh'])
+        scriptfile=".".join([sample, 'samtools-sort', 'sh'])
         outfh=open(scriptfile, 'w')
         outfh.write("#"+datestr+"\n")
         outfh.write(commandline+"\n")
